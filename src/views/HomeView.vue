@@ -59,7 +59,7 @@
                 :src="data.logo"
                 width="24"
                 :alt="data.name"
-                onerror="this.src='/images/logo-error.webp'"
+                :onerror="(e) => (e.target.src = getImage())"
               />
               <p class="table-row-name">{{ data.name }}</p>
             </div>
@@ -148,6 +148,10 @@ const teams = computed<Record<string, ITeams[]>>(() => {
 
   return formattedTeams
 })
+
+const getImage = () => {
+  return new URL('@/assets/images/logo-error.webp', import.meta.url)
+}
 
 onMounted(() => {
   teamsRequest.getTeams()

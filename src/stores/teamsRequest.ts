@@ -10,7 +10,7 @@ export const useTeamsRequest = defineStore('teamsRequest', {
   actions: {
     async getTeams(): Promise<void> {
       try {
-        const { data } = await axios.get('https://63ee0ec0388920150dd83e3c.mockapi.io/teams')
+        const { data } = await axios.get(import.meta.env.VITE_APP_API_URL + 'teams')
 
         if (data.error) {
           console.log('ERROR', data.error)
