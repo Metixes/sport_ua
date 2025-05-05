@@ -1,0 +1,30 @@
+@import './styles/fonts.scss';
+
+@import './styles/primevue-global.scss';
+@import './styles/components/app/header/header.scss';
+@import './styles/components/app/pages/page-nav.scss';
+@import './styles/components/app/pages/aside.scss';
+@import './styles/components/ui/key-guide.scss';
+@import './styles/components/ui/team-form-status.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: #ffffff;
+  color: #000000;
+}
+
+body {
+  line-height: 1.6;
+  font-family:
+    Roboto,
+    Roboto Condensed,
+    sans-serif;
+  font-size: 12px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,247 @@
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 300px;
+
+  @media (320px <= width <= 970px) {
+    max-width: 100%;
+  }
+
+  @media (320px <= width <= 768px) {
+    margin-top: 40px;
+    padding: 0 12px;
+  }
+}
+
+.aside-news {
+  &-title {
+    margin-bottom: 16px;
+    color: rgba(0, 0, 0, 0.9);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  &-link {
+    padding: 16px 4px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border-top: 1px solid #eeeeee;
+    white-space: ple-wrap;
+
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0%;
+    text-decoration: none;
+
+    &:last-child {
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    &-icon {
+      margin-top: 4px;
+      min-width: 16px;
+      height: 16px;
+    }
+  }
+
+  @media (320px <= width <= 768px) {
+    &-link {
+      padding: 16px 0 16px 4px;
+    }
+  }
+}
+
+.aside-trends {
+  &-title {
+    margin-bottom: 16px;
+    color: rgba(0, 0, 0, 0.9);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  &-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &-link {
+    padding: 9px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: left;
+    text-decoration: none;
+
+    &-icon {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+.aside-video {
+  &-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  &-title {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: rgba(0, 0, 0, 0.9);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    &-icon {
+      width: 13px;
+    }
+  }
+
+  &-cards {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &-card {
+    min-width: 300px;
+    min-height: 180px;
+    position: relative;
+    padding: 12px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 4px;
+    text-decoration: none;
+    overflow: hidden;
+
+    &::before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7) 100%);
+      z-index: -1;
+    }
+
+    &-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -2;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    &-header {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    &-category {
+      padding: 4px 8px;
+      border-radius: 2px;
+      background: rgb(37, 187, 30);
+      color: rgb(255, 255, 255);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 92.38%;
+      letter-spacing: 0%;
+    }
+
+    &-video-icon-wrapper {
+      padding: 14px 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.54);
+    }
+
+    &-icon {
+      width: 14px;
+    }
+
+    &-title {
+      margin: 32px 0 12px;
+      color: rgb(255, 255, 255);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 20px;
+      letter-spacing: 0%;
+    }
+
+    &-link {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+
+      &:hover {
+        color: blue;
+        text-decoration: underline;
+      }
+    }
+
+    &-footer {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 92.38%;
+      text-transform: capitalize;
+    }
+
+    &-footer-views {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      &-icon {
+        width: 13px;
+        height: 13px;
+      }
+    }
+  }
+
+  @media (320px <= width <= 768px) {
+    &-card-title {
+      margin: 54px 0 12px;
+    }
+  }
+}

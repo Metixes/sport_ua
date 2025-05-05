@@ -1,0 +1,242 @@
+@use '@/assets/styles/colors.scss' as *;
+
+:root {
+  --primary-color: black;
+  --primary-color-text: black;
+
+  --surface-ground: black;
+  --surface-card: black;
+  --text-color: #333333;
+
+  --highlight-bg: black;
+  --highlight-text-color: #000000;
+
+  --p-breadcrumb-item-color: rgba(0, 0, 0, 0.54) !important;
+  --p-breadcrumb-background: white !important;
+  --p-breadcrumb-item-hover-color: rgba(0, 0, 0, 0.7) !important;
+  --p-badge-warn-color: #fadb00 !important;
+  --p-badge-warn-background: #fadb00 !important;
+  --p-badge-danger-background: #ff4122 !important;
+  --p-badge-danger-color: #ffff !important;
+  --p-badge-font-size: 10px !important;
+  --p-badge-font-weight: 900 !important;
+  --p-badge-min-width: 14px !important;
+  --p-badge-height: 14px !important;
+  --p-badge-contrast-background: #ffffff !important;
+  --p-badge-contrast-color: #ffffff !important;
+  --p-badge-primary-background: #ffffff !important;
+  --p-badge-dot-size: 6px !important;
+  --p-datatable-row-background: #ffffff !important;
+  --p-datatable-row-color: color: rgba(0, 0, 0, 0.8) !important;
+  --p-datatable-column-title-font-weight: 400 !important;
+  --p-datatable-header-cell-color: rgb(255, 255, 255) !important;
+  --p-datatable-header-cell-background: rgb(51, 51, 51) !important;
+  --p-datatable-header-cell-selected-background: rgb(51, 51, 51) !important;
+  --p-datatable-body-cell-border-color: rgba(95, 120, 137, 0.16) !important;
+  --p-breadcrumb-gap: 12px !important;
+}
+
+.p-overlaybadge .p-badge {
+  transform: translate(20%, -35%) !important;
+}
+
+.p-breadcrumb-separator-icon {
+  width: 8px !important;
+  height: 8px !important;
+  color: $black6;
+}
+
+.p-tablist-content .p-tablist-tab-list {
+  gap: 24px;
+  background: $white;
+  border-color: transparent;
+
+  & .p-tab > span {
+    color: $black3;
+    font-family: 'Roboto';
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+  }
+
+  & .p-tab:is(.p-tab-active) span {
+    color: $black5;
+    font-weight: 500;
+  }
+
+  & .p-tab {
+    padding: 0 0 11px 0;
+    border-color: transparent;
+
+    &:hover {
+      border-color: $white1 !important;
+    }
+  }
+
+  .p-tablist-active-bar {
+    height: 2px;
+    background-color: $yellow;
+  }
+}
+
+.p-tooltip {
+  left: 28px !important;
+
+  &-arrow {
+    left: 16px !important;
+    border-color: $black9;
+  }
+
+  &-text {
+    background: $black9;
+  }
+}
+
+.p-datatable {
+  font-size: 12px;
+  line-height: 20px;
+
+  &-table-container {
+    border-radius: 6px;
+    box-shadow: 0px 1px 6px 0px $black10;
+  }
+
+  // TABLE HEADER CELL
+  &-header-cell:not(:first-child) &-column-header-content {
+    justify-content: center;
+    white-space: nowrap;
+  }
+  &-header-cell:is(&-column-sorted) {
+    color: $white !important;
+  }
+
+  &-thead tr &-header-cell {
+    padding: 0;
+  }
+
+  &-thead tr &-header-cell:first-child {
+    padding-block: 4px;
+    padding-inline-start: 16px;
+  }
+
+  &-thead tr &-header-cell:last-child {
+    min-width: 64px;
+  }
+  // TABLE HEADER CELL
+
+  // TABLE BODY CELL
+  &-tbody tr td {
+    min-width: 26px;
+    font-size: 14px !important;
+  }
+
+  &-tbody tr td:first-child {
+    padding: 6px 0 6px 12px !important;
+  }
+
+  &-tbody tr td:is(.scored-conceded) {
+    min-width: 84px;
+  }
+
+  &-tbody tr td:is(.games) {
+    min-width: 46px;
+  }
+  // TABLE BODY CELL
+
+  &-header-cell:first-child &-column-header-content &-column-title {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &-tbody > tr > td {
+    padding: 0 !important;
+    color: $black6;
+    font-family: Roboto Condensed;
+    font-size: 15px;
+    line-height: 24px;
+    text-align: center !important;
+    white-space: nowrap;
+  }
+
+  &-tbody > tr > td:first-child {
+    font-family: 'Roboto';
+  }
+
+  &-tbody > tr > td:last-child {
+    font-weight: 700;
+  }
+
+  &-tbody > tr > td:not(:first-child) {
+    font-family: Roboto Condensed;
+    font-size: 15px;
+    line-height: 24px;
+    width: 0rem;
+  }
+
+  @media (320px <= width < 768px) {
+    // TABLE HEADER CELL
+    &-header-cell:is(.games) &-column-header-content &-column-title {
+      width: 8px;
+      overflow: hidden;
+    }
+
+    &-header-cell:is(.points) &-column-header-content &-column-title {
+      width: 8px;
+      overflow: hidden;
+    }
+
+    &-header-cell:is(.form) {
+      display: none;
+    }
+
+    &-tbody tr td:is(.form) {
+      display: none;
+    }
+
+    &-header-cell &-column-header-content &-column-title {
+      color: $white;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 20px;
+    }
+
+    &-thead tr &-header-cell:first-child {
+      padding-block: 4px;
+      padding-inline-start: 12px;
+    }
+    &-thead tr &-header-cell:last-child {
+      padding-block: 4px;
+      padding-inline-end: 12px;
+    }
+    // TABLE HEADER CELL
+
+    // TABLE BODY CELL
+    &-tbody tr td {
+      min-width: 20px;
+      font-size: 14px !important;
+    }
+
+    &-tbody tr td:first-child {
+      padding: 6px 0 6px 8px !important;
+    }
+
+    &-tbody tr td:last-child {
+      padding: 6px 12px 6px 0 !important;
+    }
+
+    &-tbody tr td:is(.scored-conceded) {
+      min-width: 64px;
+    }
+
+    &-tbody tr td:is(.games) {
+      min-width: 28px;
+    }
+    // TABLE BODY CELL
+  }
+
+  @media (320px <= width < 360px) {
+    &-tbody {
+      font-size: 8px !important;
+    }
+  }
+}

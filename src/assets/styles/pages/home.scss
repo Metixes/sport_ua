@@ -1,0 +1,268 @@
+@use '@/assets/styles/colors.scss' as *;
+
+.table {
+  &-header {
+    padding-inline-end: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-title {
+      color: $black1;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 24px;
+    }
+
+    &-tabs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &-tabs-tab {
+      padding: 4px 12px;
+      border-radius: 6px;
+      background: $black2;
+      color: $black3;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    &-tab-active {
+      background: $yellow;
+      color: $black1;
+      font-weight: 500;
+    }
+  }
+
+  &-row-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &-position {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 100%;
+      border-radius: 50%;
+      color: $black6;
+      cursor: pointer;
+    }
+
+    &-position--0,
+    &-position--1,
+    &-position--2 {
+      color: $white;
+    }
+
+    &-position--0 {
+      background-color: $blue;
+    }
+    &-position--1 {
+      background-color: $blue;
+    }
+
+    &-position--2 {
+      background-color: $blue1;
+    }
+  }
+
+  &-row-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  @media (320px <= width < 768px) {
+    &-header {
+      margin: 0 12px 8px 12px;
+      padding-inline-end: 0;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    &-row-info {
+      gap: 6px;
+
+      &-position {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+.page-content {
+  padding: 24px 20px 42px 20px;
+  display: flex;
+  gap: 20px;
+
+  @media (320px <= width <= 970px) {
+    flex-direction: column;
+  }
+
+  @media (320px <= width <= 768px) {
+    padding: 0 0 5px 0;
+    gap: 8px;
+  }
+}
+
+.league-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &-header {
+    position: relative;
+    margin-bottom: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    border: 1px solid $white1;
+    border-radius: 2px;
+  }
+
+  &-header-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  &-header-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    color: $black1;
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &-title {
+      margin-top: 8px;
+      color: $black1;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 100%;
+      letter-spacing: 0.02rem;
+    }
+
+    &-season {
+      color: $black4;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 100%;
+    }
+  }
+
+  &-header-nav {
+    position: absolute;
+    margin-top: 0;
+    bottom: 0;
+    left: 128px;
+  }
+
+  @media (320px <= width < 768px) {
+    gap: 8px;
+
+    &-header {
+      margin: 0 12px;
+      margin-bottom: 24px;
+      padding: 16px 16px 60px 16px;
+    }
+
+    &-header-info {
+      gap: 12px;
+    }
+
+    &-header-logo {
+      width: 48px;
+      height: 48px;
+    }
+
+    &-header-info-title {
+      color: $black1;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 20px;
+    }
+
+    &-header-info-season {
+      color: $black4;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 100%;
+    }
+
+    &-header-nav {
+      position: absolute;
+      bottom: 0;
+      left: 16px;
+    }
+  }
+
+  @media (320px <= width <= 550px) {
+    &-header-nav {
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 300px;
+      overflow: hidden;
+    }
+  }
+
+  @media (320px <= width <= 360px) {
+    &-header-nav {
+      max-width: 220px;
+    }
+  }
+}
+
+.key-guide-wrapper-desktop {
+  margin: 14px 0 0 12px;
+  max-width: 555px;
+  display: flex;
+  justify-content: space-between;
+
+  @media (320px <= width <= 768px) {
+    display: none;
+  }
+}
+
+.key-guide-wrapper-mobile {
+  margin: 10px 0 0 12px;
+  max-width: 555px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+
+  &-items {
+    display: flex;
+    gap: 12px;
+  }
+
+  &-item {
+    align-content: flex-end;
+  }
+
+  @media (width > 768px) {
+    display: none;
+  }
+}
