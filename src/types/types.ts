@@ -3,7 +3,7 @@ interface ITeamForm {
 }
 
 export interface ITeams {
-  id: number
+  id: number | string
   name: string
   group: string
   logo: string

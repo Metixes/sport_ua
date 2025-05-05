@@ -35,11 +35,11 @@
         </div>
       </div>
       <DataTable
-        :value="teams"
+        :value="array"
         :sortField="'points'"
         :sortOrder="-1"
         class="table"
-        v-for="(teams, group) in teams"
+        v-for="[group, array] in formattedTeams"
         :key="group"
       >
         <Column class="table-row" :header="'Група ' + group">
@@ -127,26 +127,26 @@ import {
 const teamsRequest = useTeamsRequest()
 const activeTab = ref(tabsTable[0])
 
-const teams = computed<Record<string, ITeams[]>>(() => {
-  const teamsCopy = JSON.parse(JSON.stringify(teamsRequest.teams))
-  const formattedTeams: Record<string, ITeams[]> = {}
+const formattedTeams = computed(() => {
+  const teams = new Map()
 
-  if (activeTab.value === 'Дома' || activeTab.value === 'В гостях') {
-    teamsCopy.forEach((team: ITeams) => {
-      team.games = Math.floor(Math.random() * 5) + 1
-      team.points = Math.floor(Math.random() * 5) + 1
-    })
-  }
+  teamsRequest.teams.forEach((team: ITeams) => {
+    const teamCopy = { ...team }
+    const group = teamCopy.group
 
-  teamsCopy.forEach((team: ITeams) => {
-    const group = team.group
-    if (!formattedTeams[group]) {
-      formattedTeams[group] = []
+    if (!teams.has(group)) {
+      teams.set(group, [])
     }
-    formattedTeams[group].push(team)
+
+    if (activeTab.value !== tabsTable[0]) {
+      teamCopy.games = Math.floor(Math.random() * 5) + 1
+      teamCopy.points = Math.floor(Math.random() * 5) + 1
+    }
+
+    teams.get(group).push(teamCopy)
   })
 
-  return formattedTeams
+  return teams
 })
 
 const getImage = (e: Event) => {
