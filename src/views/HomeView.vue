@@ -35,15 +35,16 @@
         </div>
       </div>
       <DataTable
-        :value="array"
+        :value="teamsArray"
         :sortField="'points'"
         :sortOrder="-1"
         class="table"
-        v-for="[group, array] in formattedTeams"
+        v-for="[group, teamsArray] in formattedTeams"
         :key="group"
       >
         <Column class="table-row" :header="'Група ' + group">
           <template #body="{ data, index }">
+            {{ console.log(group, teamsArray) }}
             <div class="table-row-info">
               <span
                 v-tooltip.bottom="'Лига чемпионов'"
@@ -126,38 +127,35 @@ import {
 
 const teamsRequest = useTeamsRequest()
 const activeTab = ref(tabsTable[0])
+const loading = ref(false)
 
-const formattedTeams = computed(() => {
-  const teams = new Map()
+const formattedTeams = computed<Record<string, ITeams[]>>(() => {
+  const needRandomize = activeTab.value !== tabsTable[0]
 
-  teamsRequest.teams.forEach((team: ITeams) => {
-    const teamCopy = { ...team }
-    const group = teamCopy.group
-
-    if (!teams.has(group)) {
-      teams.set(group, [])
-    }
-
-    if (activeTab.value !== tabsTable[0]) {
-      teamCopy.games = Math.floor(Math.random() * 5) + 1
-      teamCopy.points = Math.floor(Math.random() * 5) + 1
-    }
-
-    teams.get(group).push(teamCopy)
+  const updatedTeams = teamsRequest.teams.map((team: ITeams) => {
+    return needRandomize
+      ? {
+          ...team,
+          games: Math.floor(Math.random() * 5) + 1,
+          points: Math.floor(Math.random() * 5) + 1,
+        }
+      : team
   })
 
-  return teams
+  return Map.groupBy(updatedTeams, (team: ITeams) => team.group)
 })
 
-const getImage = (e: Event) => {
+const getImage = (e: Event): void => {
   if (e.target instanceof HTMLImageElement) {
     e.target.onerror = null
     e.target.src = new URL('@/assets/images/logo-error.webp', import.meta.url).toString()
   }
 }
 
-onMounted(() => {
-  teamsRequest.getTeams()
+onMounted(async () => {
+  loading.value = true
+  await teamsRequest.getTeams()
+  loading.value = false
 })
 </script>
 
